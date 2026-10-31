@@ -17,4 +17,5 @@ NoGIF does not use cookies, trackers, advertising networks, or third-party analy
 If any future updates change how the extension functions, this document will be updated accordingly.
 
 ## Contact
-If you have any questions about this privacy policy, you can open an issue or reach out via GitHub at [https://github.com/Kabir-Sidhu/nogif-youtube](https://github.com/Kabir-Sidhu/nogif-youtube) or contact Kabir Sidhu at `kabirsidhu74@gmail.com`.
+If you have any questions about this privacy policy, you can open an issue or reach out via GitHub at [https://github.com/Kabir-Sidhu/nogif-youtube](https://github.com/Kabir-Sidhu/nogif-youtube) or contact Kabir Sidhu at `kabirssidhu@gmail.com`.
+

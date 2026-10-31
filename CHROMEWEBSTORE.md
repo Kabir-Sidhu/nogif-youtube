@@ -33,9 +33,13 @@ NoGIF does not collect, track, or share any personal data, accounts, or browsing
 Support:
 Found a bug or have a suggestion? Open an issue at:
 https://github.com/Kabir-Sidhu/nogif-youtube
+or contact: kabirssidhu@gmail.com
 
 **Category**
 Productivity
+
+**Publisher Contact Email**
+kabirssidhu@gmail.com
 
 **Single Purpose**
 Removes animated GIF comments from YouTube videos and Shorts.
@@ -66,3 +70,4 @@ English
 - **Data Collected:** None. All checkboxes remain unchecked.
 - **Certifications:** All three certified (data is not sold, not used for unrelated purposes, not used for creditworthiness).
 - **Privacy Policy URL:** https://github.com/Kabir-Sidhu/nogif-youtube/blob/main/PRIVACY.md
+
