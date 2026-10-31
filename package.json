@@ -1,0 +1,14 @@
+{
+  "name": "remove-youtube-gifs",
+  "version": "1.0.0",
+  "description": "Removes animated GIF comments from YouTube videos and Shorts.",
+  "author": "Kabir Sidhu",
+  "license": "MIT",
+  "scripts": {
+    "icons": "node scripts/generate-icons.js",
+    "test": "node --test tests/**/*.test.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

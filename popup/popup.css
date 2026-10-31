@@ -1,0 +1,309 @@
+:root {
+  color-scheme: dark light;
+
+  --bg-dark: #0f0f0f;
+  --bg-light: #ffffff;
+  --surface-dark: #212121;
+  --surface-light: #f2f2f2;
+  --surface-elevated-dark: #2c2c2c;
+  --surface-elevated-light: #e5e5e5;
+  --text-primary-dark: #f1f1f1;
+  --text-primary-light: #0f0f0f;
+  --text-secondary-dark: #aaaaaa;
+  --text-secondary-light: #606060;
+  --border-dark: rgba(255, 255, 255, 0.1);
+  --border-light: rgba(0, 0, 0, 0.1);
+
+  --yt-red: #cc0000;
+  --yt-red-hover: #a80000;
+  --status-active-bg: rgba(43, 166, 64, 0.2);
+  --status-active-fg: #46d369;
+
+  --bg: var(--bg-dark);
+  --surface: var(--surface-dark);
+  --surface-elevated: var(--surface-elevated-dark);
+  --text-primary: var(--text-primary-dark);
+  --text-secondary: var(--text-secondary-dark);
+  --border: var(--border-dark);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: var(--bg-light);
+    --surface: var(--surface-light);
+    --surface-elevated: var(--surface-elevated-light);
+    --text-primary: var(--text-primary-light);
+    --text-secondary: var(--text-secondary-light);
+    --border: var(--border-light);
+    --status-active-bg: rgba(25, 135, 84, 0.14);
+    --status-active-fg: #198754;
+  }
+}
+
+@supports (color: light-dark(white, black)) {
+  :root {
+    --bg: light-dark(var(--bg-light), var(--bg-dark));
+    --surface: light-dark(var(--surface-light), var(--surface-dark));
+    --surface-elevated: light-dark(var(--surface-elevated-light), var(--surface-elevated-dark));
+    --text-primary: light-dark(var(--text-primary-light), var(--text-primary-dark));
+    --text-secondary: light-dark(var(--text-secondary-light), var(--text-secondary-dark));
+    --border: light-dark(var(--border-light), var(--border-dark));
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 332px;
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: "YouTube Sans", "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.popup-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 4px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-badge {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--yt-red);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.4px;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.app-title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.app-subtitle {
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+.status-pill {
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  background: var(--status-active-bg);
+  color: var(--status-active-fg);
+}
+
+.status-pill[data-active="false"] {
+  background: var(--surface-elevated);
+  color: var(--text-secondary);
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  transition: opacity 0.15s ease;
+}
+
+.popup-shell[data-disabled="true"] .panel:not(.stats-card) {
+  opacity: 0.55;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.segmented-control {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  background: var(--surface-elevated);
+  padding: 3px;
+  border-radius: 8px;
+}
+
+.segment input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.segment-label {
+  display: block;
+  text-align: center;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.segment input:checked + .segment-label {
+  background: var(--yt-red);
+  color: #ffffff;
+}
+
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.option-copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.option-title {
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+.option-hint {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  left: 2px;
+  top: 2px;
+  border-radius: 50%;
+  background: #ffffff;
+  transition: transform 0.15s ease;
+}
+
+.switch input:checked + .slider {
+  background: var(--yt-red);
+  border-color: var(--yt-red);
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(16px);
+}
+
+.stats-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.stat-box {
+  background: var(--surface-elevated);
+  border-radius: 8px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-label {
+  font-size: 10.5px;
+  color: var(--text-secondary);
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.reset-btn {
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface-elevated);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.reset-btn:hover {
+  background: var(--yt-red);
+  border-color: var(--yt-red);
+  color: #ffffff;
+}

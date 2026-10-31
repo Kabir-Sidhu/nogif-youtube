@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>NoGIF - YouTube GIF Remover</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main id="popup-root" class="popup-shell">
+    <header class="header">
+      <div class="brand">
+        <div class="brand-badge" aria-hidden="true">NG</div>
+        <div>
+          <div class="title-row">
+            <h1 class="app-title">NoGIF</h1>
+            <span id="status-pill" class="status-pill" data-active="true">Active</span>
+          </div>
+          <p class="app-subtitle">YouTube GIF Comment Filter</p>
+        </div>
+      </div>
+      <label class="switch" aria-label="Master toggle">
+        <input type="checkbox" id="toggle-enabled" checked>
+        <span class="slider"></span>
+      </label>
+    </header>
+
+    <section class="panel" aria-labelledby="mode-heading">
+      <h2 id="mode-heading" class="section-label">Filter Mode</h2>
+      <div class="segmented-control" role="radiogroup" aria-labelledby="mode-heading">
+        <label class="segment">
+          <input type="radio" name="filter-mode" id="mode-smart" value="smart" checked>
+          <span class="segment-label">Smart Filter</span>
+        </label>
+        <label class="segment">
+          <input type="radio" name="filter-mode" id="mode-strict" value="strict">
+          <span class="segment-label">Hide All</span>
+        </label>
+      </div>
+    </section>
+
+    <section class="panel options-list" aria-label="Filter options">
+      <label class="option-row" for="toggle-collapsible">
+        <span class="option-copy">
+          <span class="option-title">Collapsible "Show GIF" button</span>
+          <span class="option-hint">Reveal individual GIFs on mixed comments</span>
+        </span>
+        <span class="switch">
+          <input type="checkbox" id="toggle-collapsible" checked>
+          <span class="slider"></span>
+        </span>
+      </label>
+
+      <label class="option-row" for="toggle-bandwidth">
+        <span class="option-copy">
+          <span class="option-title">Bandwidth Saver</span>
+          <span class="option-hint">Pause animated WebP downloads until revealed</span>
+        </span>
+        <span class="switch">
+          <input type="checkbox" id="toggle-bandwidth" checked>
+          <span class="slider"></span>
+        </span>
+      </label>
+
+      <label class="option-row" for="toggle-hide-chip">
+        <span class="option-copy">
+          <span class="option-title">Hide "GIFs" Header Chip</span>
+          <span class="option-hint">Remove promotional GIFs filter tab</span>
+        </span>
+        <span class="switch">
+          <input type="checkbox" id="toggle-hide-chip" checked>
+          <span class="slider"></span>
+        </span>
+      </label>
+
+      <label class="option-row" for="toggle-badge">
+        <span class="option-copy">
+          <span class="option-title">Show Badge Counter</span>
+          <span class="option-hint">Display blocked GIF count on toolbar icon</span>
+        </span>
+        <span class="switch">
+          <input type="checkbox" id="toggle-badge" checked>
+          <span class="slider"></span>
+        </span>
+      </label>
+    </section>
+
+    <section class="panel stats-card" aria-label="Blocked GIF statistics">
+      <div class="stats-grid">
+        <div class="stat-box">
+          <span class="stat-label">Blocked on this video</span>
+          <strong id="stat-video" class="stat-value">0</strong>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Total blocked all-time</span>
+          <strong id="stat-total" class="stat-value">0</strong>
+        </div>
+      </div>
+      <button type="button" id="btn-reset-stats" class="reset-btn">Reset Stats</button>
+    </section>
+  </main>
+
+  <script src="../utils/storage.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

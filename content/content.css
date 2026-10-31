@@ -1,0 +1,105 @@
+/* YouTube comment GIF filter */
+
+/* Collapse GIF attachments by default */
+html:not([data-yt-gif-enabled="false"])
+  ytd-comment-view-model:not([data-yt-gif-revealed="true"])
+  ytw-comment-image-attachment-view-model,
+html:not([data-yt-gif-enabled="false"])[data-yt-gif-mode="strict"]
+  ytw-comment-image-attachment-view-model,
+html:not([data-yt-gif-enabled="false"])[data-yt-gif-collapsible="false"]
+  ytw-comment-image-attachment-view-model {
+  display: none !important;
+}
+
+html:not([data-yt-gif-enabled="false"]):not([data-yt-gif-mode="strict"]):not([data-yt-gif-collapsible="false"])
+  ytd-comment-view-model[data-yt-gif-revealed="true"]
+  ytw-comment-image-attachment-view-model {
+  display: block !important;
+  margin-top: 8px;
+}
+
+/* Smart mode: hide thread if top comment is GIF-only */
+html:not([data-yt-gif-enabled="false"]):not([data-yt-gif-mode="strict"])
+  ytd-comment-thread-renderer:has(> ytd-comment-view-model[data-yt-gif-only="true"]),
+html:not([data-yt-gif-enabled="false"]):not([data-yt-gif-mode="strict"])
+  ytd-comment-thread-renderer:has(ytd-comment-view-model[data-yt-gif-reply="false"][data-yt-gif-only="true"]),
+html:not([data-yt-gif-enabled="false"]):not([data-yt-gif-mode="strict"])
+  ytd-comment-thread-renderer:has(> ytd-comment-view-model ytw-comment-image-attachment-view-model):has(> ytd-comment-view-model yt-attributed-string#content-text:empty),
+html:not([data-yt-gif-enabled="false"]):not([data-yt-gif-mode="strict"])
+  ytd-comment-thread-renderer:has(> #comment ytd-comment-view-model ytw-comment-image-attachment-view-model):has(> #comment ytd-comment-view-model yt-attributed-string#content-text:empty) {
+  display: none !important;
+}
+
+/* Smart mode: hide GIF-only replies */
+html:not([data-yt-gif-enabled="false"]):not([data-yt-gif-mode="strict"])
+  ytd-comment-replies-renderer ytd-comment-view-model[data-yt-gif-only="true"],
+html:not([data-yt-gif-enabled="false"]):not([data-yt-gif-mode="strict"])
+  ytd-comment-replies-renderer ytd-comment-view-model:has(ytw-comment-image-attachment-view-model):has(yt-attributed-string#content-text:empty),
+html:not([data-yt-gif-enabled="false"]):not([data-yt-gif-mode="strict"])
+  ytd-comment-view-model[data-yt-gif-only="true"] {
+  display: none !important;
+}
+
+/* Strict mode: hide threads containing GIFs */
+html:not([data-yt-gif-enabled="false"])[data-yt-gif-mode="strict"]
+  ytd-comment-thread-renderer:has(> ytd-comment-view-model ytw-comment-image-attachment-view-model),
+html:not([data-yt-gif-enabled="false"])[data-yt-gif-mode="strict"]
+  ytd-comment-thread-renderer:has(> ytd-comment-view-model[data-yt-gif-blocked="true"]),
+html:not([data-yt-gif-enabled="false"])[data-yt-gif-mode="strict"]
+  ytd-comment-thread-renderer:has(> #comment ytd-comment-view-model ytw-comment-image-attachment-view-model),
+html:not([data-yt-gif-enabled="false"])[data-yt-gif-mode="strict"]
+  ytd-comment-thread-renderer:has(ytd-comment-view-model[data-yt-gif-reply="false"][data-yt-gif-blocked="true"]) {
+  display: none !important;
+}
+
+/* Strict mode: hide replies containing GIFs */
+html:not([data-yt-gif-enabled="false"])[data-yt-gif-mode="strict"]
+  ytd-comment-replies-renderer ytd-comment-view-model:has(ytw-comment-image-attachment-view-model),
+html:not([data-yt-gif-enabled="false"])[data-yt-gif-mode="strict"]
+  ytd-comment-replies-renderer ytd-comment-view-model[data-yt-gif-blocked="true"],
+html:not([data-yt-gif-enabled="false"])[data-yt-gif-mode="strict"]
+  ytd-comment-view-model[data-yt-gif-blocked="true"] {
+  display: none !important;
+}
+
+/* Hide promotional GIFs header chip */
+html:not([data-yt-gif-enabled="false"]):not([data-yt-gif-hide-chip="false"])
+  ytd-comments-header-renderer yt-chip-cloud-chip-renderer[data-yt-gif-chip="true"] {
+  display: none !important;
+}
+
+/* Toggle button */
+html[data-yt-gif-enabled="false"] .yt-gif-toggle-btn,
+html[data-yt-gif-mode="strict"] .yt-gif-toggle-btn,
+html[data-yt-gif-collapsible="false"] .yt-gif-toggle-btn {
+  display: none !important;
+}
+
+.yt-gif-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  padding: 4px 10px;
+  border: 1px solid rgba(136, 136, 136, 0.35);
+  border-radius: 16px;
+  background: rgba(128, 128, 128, 0.12);
+  color: var(--yt-spec-text-secondary, #aaa);
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.yt-gif-toggle-btn:hover {
+  background: rgba(128, 128, 128, 0.24);
+  color: var(--yt-spec-text-primary, #f1f1f1);
+}
+
+.yt-gif-toggle-btn:focus-visible {
+  outline: 2px solid #3ea6ff;
+  outline-offset: 2px;
+}
