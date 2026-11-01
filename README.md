@@ -15,7 +15,7 @@ A lightweight browser extension that hides animated GIF comments on YouTube vide
 
 Install directly from your browser's extension store:
 
-- **Chrome Web Store** *Yet to be approved*
+- **Chrome Web Store** [Install](https://chromewebstore.google.com/detail/nogif-remove-youtube-gif/phiacbiljmlocdaikbifeoklcckjpblp)
 - **Firefox Add-ons** *Yet to be approved*
 
 Manual releases and packaged zips are available under [Releases](https://github.com/Kabir-Sidhu/nogif-youtube/releases).
